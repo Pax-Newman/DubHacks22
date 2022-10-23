@@ -3,3 +3,7 @@ node_modules
 public/bundle.*
 
 venv/*
+
+*.jpg
+
+*.pyc
