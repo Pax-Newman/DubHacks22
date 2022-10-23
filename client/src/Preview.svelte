@@ -16,7 +16,7 @@
 	
 </script>
 <body>
-<div id="app">
+<div class="app">
 	<div class = "columns">
 	<div class = "column is-one-fifth">
 		<h1>Upload or Scan Image</h1>
@@ -45,8 +45,8 @@
 		display: flex;
 
 	}
-	#app{
-	display:flex;
+	.app{
+		display:flex;
 		align-items:center;
 		justify-content:center;
 		flex-flow:column;
