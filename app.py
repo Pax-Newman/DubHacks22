@@ -1,6 +1,7 @@
+from waitress import serve
 from flask import Flask, request, jsonify, send_from_directory
-import random
 import backend.backend as backend
+import sys
 
 app = Flask(__name__)
 
@@ -20,17 +21,26 @@ def getEditPage(UUID):
 
 @app.get("/data/<UUID>")
 def getReceiptData(UUID):
-    return backend.getReceiptData(UUID)
+    result = backend.getReceiptData(UUID)
+    if result is None:
+        return "Bad UUID", 400
+    else:
+        return result
 
 @app.post("/data/")
 def createReceipt():
-    print("\n", request.data, "\n")
+    UUID = backend.createReceipt(request.get_json(force=True))
+    return UUID
 
 @app.route("/data/{UUID}", methods=["PATCH"])
 def updateReceipt(UUID):
-    return f"You have updated the {UUID} recipt."
+    backend.updateReceipt(request.get_json(force=True))
+    return backend.getReceiptData(UUID)
 
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    if len(sys.argv) > 0 and sys.argv[0] == "WSGI":
+        serve(app, host="0.0.0.0", port=8080)
+    else:
+        app.run(debug=True)
