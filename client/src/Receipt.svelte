@@ -5,6 +5,7 @@ import Form from './Form.svelte';
 import AddItemCard from './AddItemCard.svelte';
 import { onMount } from 'svelte';
 import { user } from './stores';
+
 let receipt = {
   title: "Minco",
   UUID: 123890281321,
@@ -44,9 +45,21 @@ onMount(() => {
   setReceipt(queryString)
 })
 
+$: ourUser = $user
+
 function toItem(receipt, lineID) {
+
+  const queryString = window.location.search;
   let line = receipt.lines.find(line => line.lineID == lineID)
+  let userData = receipt.users.find((user) => user.userName == ourUser)
+
+  if (line == undefined || userData == undefined) {
+    return
+  }
+
   return {
+    uuid: queryString.slice(1),
+    userClaims: userData.claims,
     id: line.lineID,
     price: line.price,
     title: line.itemName,
