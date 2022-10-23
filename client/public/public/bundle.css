@@ -1,4 +1,5 @@
 .container.svelte-2davjw{float:left;display:flex}
+.modal-background.svelte-1k3utew{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3)}.modal.svelte-1k3utew{position:absolute;left:50%;top:50%;width:calc(100vw - 4em);max-width:32em;max-height:calc(100vh - 4em);overflow:auto;transform:translate(-50%,-50%);padding:1em;border-radius:0.2em;background:white}button.svelte-1k3utew{display:block}
 .app.svelte-1mxfsk2{display:flex;align-items:center;justify-content:center;flex-flow:column}.upload.svelte-1mxfsk2{display:flex;height:50px;width:50px;cursor:pointer}.avatar.svelte-1mxfsk2{display:flex;height:200px;width:200px}
 .svelte-1rwx5do{box-sizing:border-box}
 

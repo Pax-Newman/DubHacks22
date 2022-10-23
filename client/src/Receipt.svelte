@@ -1,6 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
 import ItemCard from './ItemCard.svelte';
+import Form from './Form.svelte';
 import AddItemCard from './AddItemCard.svelte';
 import { onMount } from 'svelte';
 let receipt = {
@@ -61,9 +62,17 @@ function toItem(receipt, lineID) {
 </script>
 
 <div class="columns">
+  <div class = "column is-one fifth">
+    <div class="box">
+      <Form></Form>
+      </div>
+  </div>
+</div>
+
+<div class="columns">
   <div class = "column is-one fifth offset-3">
     <h1>Itemization of Receipt</h1>
-    <div></div>
+
 
 </div>
 </div>
