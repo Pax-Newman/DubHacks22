@@ -27,10 +27,14 @@ onMount(() => {
   // TODO change this so it also checks if the query is valid with the API
   const querying = isParamEmpty();
   if (!querying) {
-    $state = STATES.receipt
+    state.set(STATES.receipt)
   } else {
-    $state = STATES.home
+    state.set(STATES.home)
   }
+})
+
+state.subscribe(value => {
+  console.log(value)
 })
 
 // Check if the query is empty
@@ -44,19 +48,18 @@ function isParamEmpty() {
 
 <!-- Load based on state var -->
 <body>
-  <button on:click={() => {$state = STATES.home}} class="button is-primary">To Home</button>
-  <button on:click={() => $state = STATES.preview} class="button is-primary">To Preview</button>
-  <button on:click={() => $state = STATES.receipt} class="button is-primary">To Receipt</button>
+  <button on:click={() => state.set(STATES.home)} class="button is-primary">To Home</button>
+  <button on:click={() => state.set(STATES.preview)} class="button is-primary">To Preview</button>
+  <button on:click={() => state.set(STATES.receipt)} class="button is-primary">To Receipt</button>
   <p>{$state}</p>
 
-  {#if state === state }
+  {#if $state === STATES.home }
     <Home/>
-  {:else if state === STATES.preview}
+  {:else if $state === STATES.preview}
     <Scan/>
-  {:else if state === STATES.receipt}
+  {:else if $state === STATES.receipt}
     <p>butts</p>
   {/if}
-  <title>Home</title>
 </body>
   
 
