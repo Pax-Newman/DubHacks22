@@ -2,6 +2,7 @@
 <script>
 import ItemCard from './ItemCard.svelte';
 import AddItemCard from './AddItemCard.svelte';
+import { onMount } from 'svelte';
 let receipt = {
   title: "Minco",
   UUID: 123890281321,
@@ -27,6 +28,20 @@ let receipt = {
     },
   ],
 }
+
+
+function setReceipt(query) {
+  const url = `data/${query.slice(1)}`
+  
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+}
+
+onMount(() => {
+  const queryString = window.location.search;
+  setReceipt(queryString)
+})
 
 function toItem(receipt, lineID) {
   let line = receipt.lines.find(line => line.lineID == lineID)
