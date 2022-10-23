@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+  
   <style>
     body, html {height: 100%}
     .bgimg {
@@ -15,16 +15,19 @@
   </style>
 </head>
 
-<body on:load={isParamEmpty}>
-  {#if homeView }
-    <Home/>
-  {:else}
-    <Scan/>
-  {/if}
-  <title>Home</title>
-</body>
-
 <script>
+import Home from './Home.svelte';
+import Scan from './Scan.svelte';
+import { onMount } from 'svelte'
+
+// Vars
+let homeView = true;
+
+// When the component is rendered
+onMount(() => {
+  isParamEmpty();
+})
+
 function isParamEmpty() {
   const queryString = window.location.search;
   console.log(queryString);
@@ -35,18 +38,21 @@ function isParamEmpty() {
   }
 }
 
-window.addEventListener('load', (event) => {
-    isParamEmpty();
-});
-        	import Home from './Home.svelte';
-          import Scan from './Scan.svelte';
-          let homeView = true;
-       
-        function toggleView (){
-          homeView = !homeView;
-        }
+function toggleView (){
+  homeView = !homeView;
+}
     
 </script>
+
+<!-- Load based on  -->
+<body>
+  {#if homeView }
+    <Home/>
+  {:else}
+    <Scan/>
+  {/if}
+  <title>Home</title>
+</body>
   
 
   
