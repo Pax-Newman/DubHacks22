@@ -18,20 +18,33 @@ const onFileSelected = (e) => {
 <body>
 <div class="app">
 	<div class = "columns">
-		<div class = "column is-one-fifth">
-			<h1>Upload or Scan Image</h1>
-			<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
-		</div>
-		<div class = "column is-one-fifth">
-			<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} />
-		</div>
+	<div class = "column is-one-fifth">
+		<h1>Upload or Scan Image</h1>
+		<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
 	</div>
-  {#if avatar}
-  	<img class="avatar" src="{avatar}" alt="d" />
-  {:else}
-  	<img class="avatar" src="https://en.wikipedia.org/wiki/File:Blank_button.svg#/media/File:Blank_button.svg" alt="" /> 
-  {/if}
+	<div class = "column is-one-fifth">
+	<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} />
+	
 </div>
+<div class = "column is-one-fifth">
+<button class="button is-primary is-large">Parse Receipt</button>
+
+<div class = "column is-one-fifth"></div>
+	<button  on:click={()=>{fileinput.click();}} class="button is-danger is-large">Retake Image</button>
+</div>
+</div>
+
+    {#if avatar}
+
+    <img class="avatar" src="{avatar}" alt="d" />
+
+    {:else}
+
+    <img class="avatar" src="https://en.wikipedia.org/wiki/File:Blank_button.svg#/media/File:Blank_button.svg" alt="" /> 
+	
+    {/if}
+
+	</div>
 
 </body>
 <style>

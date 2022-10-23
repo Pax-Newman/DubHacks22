@@ -68,7 +68,7 @@ function isParamEmpty() {
   {#if $state === STATES.home }
     <Home/>
   {:else if $state === STATES.preview}
-  <div class="column is-full is-offset-4" transition:fade>
+  <div class="column is-full is-offset-3" transition:fade>
     <Preview/>
   </div>
   {:else if $state === STATES.receipt}
