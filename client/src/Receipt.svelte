@@ -1,6 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
   import ItemCard from './ItemCard.svelte';
+  import AddNewCard from 'AddNewCard.svelte';
 </script>
 
 
@@ -9,9 +10,7 @@
   <div class = "column is-one-third">
     <p class = "title">Itemization</p> 
   </div>
-  <div class = "column is-one-third">
-    <div class = "item"><button class="button">+Add Item</button></div>
-  </div>
+
   </div>  
   <div class="columns">
     <div class = "column is-one-third">
@@ -21,6 +20,8 @@
 
       <ItemCard></ItemCard>
       <ItemCard></ItemCard>
+      <AddNewCard></AddNewCard>
+      <div class = "item"><button class="button">+ Add Item</button></div>
     </div>
   </div>
   <style>
