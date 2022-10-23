@@ -7,8 +7,12 @@ from backend.parse_receipt_text import parse_receipt
 
 db = DB.Database()
 
+
 def getReceiptData(UUID: str):
     dict = db.getReceipt(UUID)
+    if dict is None:
+        return None
+
     del dict["_id"]
     return to_json(dict)
 
@@ -32,7 +36,7 @@ def createReceipt(json_data: str):
     lines, tax = parse_receipt(text)
     img: Image = decode_b64_img(b64_img)
 
-    db.createReceipt(title, lines, tax, json_data["image"])
+    return db.createReceipt(title, lines, tax, json_data["image"])
 
 def decode_b64_img(b64_img):
     img  = Image.open(io.BytesIO(base64.decodebytes(bytes(b64_img, "utf-8"))))

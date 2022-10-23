@@ -41,6 +41,7 @@ class Database:
         # remove old user in the list if in it
         for i, user in enumerate(receipt["users"]):
             if user["userName"] == changes["userName"]:
+                print(receipt["users"][i])
                 del receipt["users"][i]
                 break
 

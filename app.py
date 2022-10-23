@@ -21,7 +21,11 @@ def getEditPage(UUID):
 
 @app.get("/data/<UUID>")
 def getReceiptData(UUID):
-    return backend.getReceiptData(UUID)
+    result = backend.getReceiptData(UUID)
+    if result is None:
+        return "Bad UUID", 400
+    else:
+        return result
 
 @app.post("/data/")
 def createReceipt():
