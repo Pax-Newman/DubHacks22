@@ -66,3 +66,6 @@ def parse_text(text: str) -> list[Tuple[str, int]]:
             break
 
     return outputs
+
+def parse_receipt(text: str) -> Tuple[list[Tuple[str, int]], int]:
+    return parse_text(text), parse_tax(text)
