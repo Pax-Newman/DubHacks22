@@ -54,7 +54,7 @@ class Database:
         for i, line in enumerate(receipt["lines"]):
             if line["lineID"] not in changes["removals"]:
                 new_lines.append(line)
-            
+        receipt["lines"] = new_lines
 
         # Remove all removed lines from every user's claimed list
         for removal in changes["removals"]:
@@ -64,10 +64,9 @@ class Database:
                     user["claims"].remove(removal)
 
         # Add all of the new lines to the lines list
-
         nextLineId = max(receipt["lines"], key=lambda l: l["lineID"])["lineID"] + 1
         for addition in changes["additions"]:
-            receipt["lines"].append({"lineID": nextLineId, "name": addition["name"], "price": addition["price"]})
+            receipt["lines"].append({"lineID": nextLineId, "itemName": addition["itemName"], "price": addition["price"]})
             
             #Search for the target user and add the new ID to their claims
             target_user = addition["user"]
@@ -104,5 +103,5 @@ if __name__ == "__main__":
 
     id = db.createReceipt("Fred Meyer Trip", [("Braed", 599), ("Donuts", 2467), ("Soda", 1195), ("Chips", 1245), ("Watermelon", 499), ("Lube", 2732)], 0, "IMAGE_PLACEHOLDER")
     db.editReceipt(id, {"userName": "Natalie", "claims" : [0,1,2, 3, 4, 5] , "updates":[{"lineID":0, "newName": "Bread", "newPrice":599}], "additions":[], "removals":[]})
-    db.editReceipt(id, {"userName": "Pax", "claims" : [0, 2,3,4] , "updates":[], "additions":[{"name": "sauce", "price":199, "user":"Pax"}], "removals":[]})
+    db.editReceipt(id, {"userName": "Pax", "claims" : [0, 2,3,4] , "updates":[], "additions":[{"itemName": "sauce", "price":199, "user":"Pax"}], "removals":[]})
     db.editReceipt(id, {"userName": "Dylan", "claims" : [0,5] , "updates":[], "additions":[], "removals":[5]})
