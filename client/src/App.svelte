@@ -1,66 +1,71 @@
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-
-  <title>W3.CSS Template</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-  <style>
-
-  body, html {height: 100%}
-  .bgimg {
-    min-height: 100%;
-    background-position: center;
-    background-size: cover;
-  }
-  </style>
-
 <head>
-  
+  <title>Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-
-  <title>Home</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-  </head>
   
-  {#if homeView }
-  <Home></Home>
-  {/if}
+  <style>
+    body, html {height: 100%}
+    .bgimg {
+      min-height: 100%;
+      background-position: center;
+      background-size: cover;
+    }
+  </style>
+</head>
 
-  {#if !homeView }
-<h1>Scan View</h1>
-  {/if}
-  <title>Home</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script>
+import Home from './Home.svelte';
+import Preview from './Preview.svelte';
+import Receipt from './Receipt.svelte';
+import { onMount } from 'svelte';
+import { state, STATES } from './stores'
 
+// When the component is rendered
+onMount(() => {
+  // Set state based on url
+  // TODO change this so it also checks if the query is valid with the API
+  const querying = isParamEmpty();
+  if (!querying) {
+    state.set(STATES.receipt)
+  } else {
+    state.set(STATES.home)
+  }
+})
 
-      <script>
-        	import Home from './Home.svelte';
+state.subscribe(value => {
+  console.log(value)
+})
 
-          let homeView = true;
-        function isParamEmpty() {
-            const queryString = window.location.search;
-          
-            if (queryString.length == 0){
-              homeView = true;
-            }else{
-              homeView = false;
-            }
-             
-            }
-        function toggleView (){
-          homeView = !homeView;
-        }
+// Check if the query is empty
+function isParamEmpty() {
+  const queryString = window.location.search;
+  console.log(queryString);
+  return queryString.length == 0
+}
     
-      </script>
-    
+</script>
+
+<!-- Load based on state var -->
+<body>
+  <button on:click={() => state.set(STATES.home)} class="button is-primary">To Home</button>
+  <button on:click={() => state.set(STATES.preview)} class="button is-primary">To Preview</button>
+  <button on:click={() => state.set(STATES.receipt)} class="button is-primary">To Receipt</button>
+  <p>{$state}</p>
+
+  {#if $state === STATES.home }
+    <Home/>
+  {:else if $state === STATES.preview}
+    <Scan/>
+  {:else if $state === STATES.receipt}
+    <p>butts</p>
+  {/if}
+</body>
   
+
+  
+
 
   
 

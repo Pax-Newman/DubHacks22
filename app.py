@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 # Path for our main Svelte page
 @app.route("/")
-def getMainPage():
+def base():
     return send_from_directory('client/public', 'index.html')
 
 # Path for all the static files (compiled JS/CSS, etc.)
@@ -13,22 +13,10 @@ def getMainPage():
 def home(path):
     return send_from_directory('client/public', path)
 
-@app.get("/<UUID>")
-def getEditPage(UUID):
-    return f"This is the {UUID} page!"
 
-@app.get("/data/<UUID>")
-def getReceiptData(UUID):
-    return f"This is the data for the {UUID} recipt!"
-
-@app.post("/data/")
-def createReceipt():
-    return f"You have created a new recipt!"
-
-@app.route("/data/{UUID}", methods=["PATCH"])
-def updateReceipt(UUID):
-    return f"You have updated the {UUID} recipt."
-
+@app.route("/rand")
+def hello():
+    return str(random.randint(0, 100))
 
 
 if __name__ == "__main__":
