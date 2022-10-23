@@ -12,10 +12,14 @@ export let itemObj = {
     "Natalie",
     "Jonas",
     "Being X",
-  ]
+  ],
+  userClaims: [
+    0, 1
+  ],
+  uuid: ""
 }
 
-const url = `data/${itemObj.uuid}`
+const url = `data/?${itemObj.uuid}`
 const body = {
   userName:$user,
   claims:itemObj.userClaims,
@@ -23,6 +27,8 @@ const body = {
   additions:[],
   removals:[],
 }
+
+let clicked = 0
 
 function getPrice(price) {
   return (price / 100).toFixed(2)
@@ -37,13 +43,15 @@ function patch(data) {
 
 function claim() {
   let data = body
-  data.userClaims = [data.userClaims, itemObj.id]
+  itemObj.tags = [...itemObj.tags, $user]
+  data.claims = [...data.claims, itemObj.id]
   patch(data)
 }
 
 function unclaim() {
   let data = body
-  data.userClaims = data.userClaims.filter((id) => id === itemObj.id)
+  itemObj.tags = itemObj.tags.filter((tag) => tag != $user)
+  data.claims = data.claims.filter((id) => id != itemObj.id)
   patch(data)
 }
 </script>

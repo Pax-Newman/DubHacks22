@@ -51,10 +51,16 @@ function toItem(receipt, lineID) {
 
   const queryString = window.location.search;
   let line = receipt.lines.find(line => line.lineID == lineID)
+  
   let userData = receipt.users.find((user) => user.userName == ourUser)
 
-  if (line == undefined || userData == undefined) {
-    return
+  if (userData == undefined) {
+    userData = {
+      userName: "",
+      claims: [],
+      totalPrice: 0,
+      image: "",
+    }
   }
 
   return {
@@ -90,7 +96,7 @@ function toItem(receipt, lineID) {
 
   <div class="columns">
     <div class = "column is-one-third">
-      <img src="https://picsum.photos/300/500" margin = "1em">
+      <img src="/public/images/receipt.jpeg" margin = "1em">
     </div>
     <div class = "column is-one fifth">
       {#each receipt.lines as line}
