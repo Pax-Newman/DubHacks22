@@ -41,10 +41,6 @@
 </body>
 <style>
 
-	.header {
-		display: flex;
-
-	}
 	.app{
 		display:flex;
 		align-items:center;
