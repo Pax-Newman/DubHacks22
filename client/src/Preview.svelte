@@ -33,7 +33,7 @@ function newReceipt() {
 		method: "POST",
 		body: JSON.stringify(request_body)
 
-	}).then((response) => {response.body.})
+	}).then((response) => {response.body})
 		
 		//window.location.replace()
 
