@@ -18,6 +18,7 @@
 <script>
 import Home from './Home.svelte';
 import Scan from './Scan.svelte';
+import ItemCard from './ItemCard.svelte';
 import { onMount } from 'svelte';
 
 const STATES = {
@@ -54,6 +55,7 @@ function toggleView (){
 
 <!-- Load based on  -->
 <body>
+  
   {#if state === STATES.home }
     <Home/>
   {:else if state === STATES.preview}
@@ -61,8 +63,9 @@ function toggleView (){
   {:else if state === STATES.receipt}
     <p>beeps</p>
   {/if}
+  </body>
   <title>Home</title>
-</body>
+
   
 
   

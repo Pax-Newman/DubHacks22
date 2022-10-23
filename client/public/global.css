@@ -1,6 +1,6 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
 @import url(http://fonts.googleapis.com/css?family=Poppins);
-
+@import 'bulma/css/bulma.css'
 
 html, body {
 	position: relative;
