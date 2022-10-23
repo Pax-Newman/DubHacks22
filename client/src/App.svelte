@@ -33,17 +33,20 @@ let homeView = true;
 
 // When the component is rendered
 onMount(() => {
-  isParamEmpty();
+  // TODO change this so it also checks if the query is valid with the API
+  const querying = isParamEmpty();
+  if (querying) {
+    state = STATES.receipt
+  } else {
+    state = STATES.home
+  }
 })
 
+// Change state based on query string
 function isParamEmpty() {
   const queryString = window.location.search;
   console.log(queryString);
-  if (queryString.length == 0) {
-    homeView = true;
-  } else {
-    homeView = false;
-  }
+  return queryString.length == 0
 }
 
 function toggleView (){
