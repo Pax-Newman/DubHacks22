@@ -1,4 +1,3 @@
-from waitress import serve
 from flask import Flask, request, jsonify, send_from_directory
 import backend.backend as backend
 import sys
@@ -29,7 +28,10 @@ def getReceiptData(UUID):
 
 @app.post("/data/")
 def createReceipt():
-    UUID = backend.createReceipt(request.get_json(force=True))
+    json_data = request.get_json(force=True)
+    print(json_data)
+    print(type(json_data))
+    UUID = backend.createReceipt(json_data)
     return UUID
 
 @app.route("/data/{UUID}", methods=["PATCH"])
