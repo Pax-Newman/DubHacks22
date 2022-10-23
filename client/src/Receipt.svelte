@@ -36,7 +36,7 @@ function setReceipt(query) {
   
   fetch(url)
     .then((response) => response.json())
-    .then((data) => receipt.set(data))
+    .then((data) => receipt = data)
 }
 
 onMount(() => {
