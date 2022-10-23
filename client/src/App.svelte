@@ -73,10 +73,10 @@ function isParamEmpty() {
     <Preview/>
   </div>
   {:else if $state === STATES.receipt}
-  <!-- <div class = "column is-full
-  is-offset-2"> -->
-  <Dummy/>
-  <!-- </div> -->
+ <div class = "column is-full
+  is-offset-2">
+  <Receipt/>
+</div>
   {/if}
-  
+
 </body>
