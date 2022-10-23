@@ -24,7 +24,8 @@ import Home from './Home.svelte';
 import Preview from './Preview.svelte';
 import Receipt from './Receipt.svelte';
 import { onMount, onDestroy } from 'svelte';
-import { state, STATES } from './stores'
+import { state, STATES } from './stores';
+import { fade } from 'svelte/transition';
 
 // When the component is rendered
 onMount(() => {
@@ -67,13 +68,11 @@ function isParamEmpty() {
   {#if $state === STATES.home }
     <Home/>
   {:else if $state === STATES.preview}
-  <div class = "column is-full
-  is-offset-4">
+  <div class="column is-full is-offset-4" transition:fade>
     <Preview/>
   </div>
   {:else if $state === STATES.receipt}
- <div class = "column is-full
-  is-offset-0.5">
+ <div class="column is-fullis-offset-0.5" transition:fade>
   <Receipt/>
 </div>
   {/if}
