@@ -2,6 +2,29 @@
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
+  <script>
+ function isParamEmpty() {
+                const queryString = window.location.search;
+                console.log(queryString);
+                if (queryString.length == 0){
+                  homeView = true;
+                }else{
+                  homeView = false;
+                }
+                 
+                }
+    window.addEventListener('load', (event) => {
+      isParamEmpty();
+    });
+
+              import Scan from './Scan.svelte';
+              let homeView = true;
+           
+            function toggleView (){
+              homeView = !homeView;
+            }
+        
+          </script>
 
 <head>
   
@@ -31,7 +54,9 @@
     <div class="w3-display-middle">
       <h1 class="w3-jumbo w3-animate-top">Welcome, </h1>
 
-      <p class="w3-large w3-center"> <button class="button" onClick = "toggleView()">Button</button>
+      <p class="w3-large w3-center"> <button on:click={toggleView}>
+        Scan or Add Receipt
+      </button>
       
 
     </div>
@@ -42,27 +67,4 @@
     </div>
   </div>
 
-  <script>
- function isParamEmpty() {
-                const queryString = window.location.search;
-                console.log(queryString);
-                if (queryString.length == 0){
-                  homeView = true;
-                }else{
-                  homeView = false;
-                }
-                 
-                }
-    window.addEventListener('load', (event) => {
-      isParamEmpty();
-    });
-
-              import Scan from './Scan.svelte';
-              let homeView = true;
-           
-            function toggleView (){
-              homeView = !homeView;
-            }
-        
-          </script>
 

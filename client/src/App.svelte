@@ -73,11 +73,7 @@ window.addEventListener('load', (event) => {
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
   
-{#if homeView }
-  <Home/>
-{:else if !homeView }
-<h1>Scan View</h1>
-{/if}
+
   
 
 

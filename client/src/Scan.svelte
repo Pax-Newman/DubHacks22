@@ -1,4 +1,17 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
 <style>
+
+
+body, html {height: 100%}
+  .bgimg {
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+  }
+  
   #cameraFileInput {
   display: none;
 }
@@ -28,33 +41,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Camera in browsers - pixo</title>
+<title>Add Receipt</title>
 
 <!-- imports the webpage's stylesheet -->
 <link rel="stylesheet" href="style.css" />
-
-
-
 <body>
 <h1>Scan or Import Receipt</h1>
 
-<!-- The `label` is attached to the hidden file input -->
-<label for="cameraFileInput">
-  <span class="btn">Open camera</span>
+<input type="file" id="filetag">
+<img src="" id="preview">
 
-  <!-- The hidden file `input` for opening the native camera -->
-  <input
-    id="cameraFileInput"
-    type="file"
-    accept="image/*"
-    capture="environment"
-  />
-</label>
 
-<!-- displays the picture uploaded from the native camera -->
-<!-- svelte-ignore a11y-missing-attribute -->
-<img id="pictureFromCamera" />
+
 </body>
 
-
+  
 
