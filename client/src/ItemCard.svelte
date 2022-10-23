@@ -36,13 +36,13 @@ function patch(data) {
 }
 
 function claim() {
-  data = body
-  data.userClaims = data.userClaims.concat([itemObj.id])
+  let data = body
+  data.userClaims = [data.userClaims, itemObj.id]
   patch(data)
 }
 
 function unclaim() {
-  data = body
+  let data = body
   data.userClaims = data.userClaims.filter((id) => id === itemObj.id)
   patch(data)
 }
