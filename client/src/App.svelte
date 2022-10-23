@@ -61,8 +61,8 @@ function isParamEmpty() {
   <div class=" w3-padding-large w3-xlarge">
     Receiptly
 
-  <button on:click={() => state.set(STATES.home)} class="button is-primary">Home</button>
-  <button on:click={() => state.set(STATES.preview)} class="button is-primary">Preview</button>
+
+  <button on:click={() => state.set(STATES.preview)} class="button is-primary">Add and Scan</button>
   <button on:click={() => state.set(STATES.receipt)} class="button is-primary">Receipt</button>
 </div>
   {#if $state === STATES.home }
