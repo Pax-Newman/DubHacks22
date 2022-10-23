@@ -1,11 +1,12 @@
-from flask import Flask, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory
 import random
+import backend.database
 
 app = Flask(__name__)
 
 # Path for our main Svelte page
 @app.route("/")
-def base():
+def getMainPage():
     return send_from_directory('client/public', 'index.html')
 
 # Path for all the static files (compiled JS/CSS, etc.)
@@ -13,10 +14,23 @@ def base():
 def home(path):
     return send_from_directory('client/public', path)
 
+@app.get("/<UUID>")
+def getEditPage(UUID):
+    return send_from_directory('client/public', 'index.html')
 
-@app.route("/rand")
-def hello():
-    return str(random.randint(0, 100))
+@app.get("/data/<UUID>")
+def getReceiptData(UUID):
+    return 
+
+@app.post("/data/")
+def createReceipt():
+    print("\n", request.data, "\n")
+    return f"You have created a new recipt!"
+
+@app.route("/data/{UUID}", methods=["PATCH"])
+def updateReceipt(UUID):
+    return f"You have updated the {UUID} recipt."
+
 
 
 if __name__ == "__main__":

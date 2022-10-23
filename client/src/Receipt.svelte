@@ -1,6 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
 import ItemCard from './ItemCard.svelte';
+import AddItemCard from './AddItemCard.svelte';
 let receipt = {
   title: "Minco",
   UUID: 123890281321,
@@ -41,14 +42,17 @@ function toItem(receipt, lineID) {
   }
 }
 
+
 </script>
 
 <div class="columns">
-  <div class = "column is-one-third is-offset-one-quarter">
-    <h1 class = "title">Itemization</h1> 
-  </div>
+  <div class = "column is-one fifth offset-3">
+    <h1>Itemization of Receipt</h1>
+    <div></div>
 
-  </div>  
+</div>
+</div>
+
   <div class="columns">
     <div class = "column is-one-third">
       <img src="https://picsum.photos/300/500" margin = "1em">
@@ -56,8 +60,8 @@ function toItem(receipt, lineID) {
     <div class = "column is-one fifth">
       {#each receipt.lines as line}
         <ItemCard itemObj={toItem(receipt, line.lineID)}/>
-      {/each}
-      <div class = "item"><button class="button">+ Add Item</button></div>
+      {/each}      
+      <AddItemCard/>
     </div>
   </div>
   <style>
@@ -73,6 +77,10 @@ function toItem(receipt, lineID) {
   padding: 10px;
   border: 2px solid rgba(111,41,97,.5);
 
+}
+
+.h1{
+  text-align: center;
 }
 
 .head{

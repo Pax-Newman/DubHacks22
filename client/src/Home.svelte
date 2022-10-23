@@ -18,29 +18,45 @@ function changeView(newState) {
 
 
   
-<div class="bgimg w3-display-container w3-animate-opacity w3-text-black">
+<div class="bgimg w3-display-container w3-animate-opacity">
 
   <div class="w3-display-middle">
 
-    <h1 class="w3-jumbo w3-animate-top">Welcome, </h1>
-      <label for="file-upload">
-        <span type="btn" class="button is-primary">Scan a receipt!</span>
-        <input
-              id="file-upload"
-              type="file"
-              alt="camera"
-              accept="image/*"
-              capture="environment"
-              style="display: none"
-              bind:files
-            />
-      </label>
+    
+
+    <div class="columns is-mobile is-multiline is-centered">
+     
+      <img src="public/images/receipt-man-nooutline.svg">
+      <div class="column is-half">
+
+          <h1 class="w3-jumbo w3-animate-top">Welcome!</h1>
+
+        <label for="file-upload">
+          <span type="btn" class="button is-primary is-large">Scan a receipt!</span>
+          <input
+                id="file-upload"
+                type="file"
+                alt="camera"
+                accept="image/*"
+                capture="environment"
+                style="display: none"
+                bind:files
+              />
+        </div>
+       
+      </div>
+   </div>
+
+
+      
+ 
+
       {#if files && files[0]}
         <p>
           {files[0].name}
         </p>
       {/if}
   </div>
-</div>
+
 
 
