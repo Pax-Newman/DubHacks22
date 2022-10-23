@@ -3,7 +3,7 @@
   import ItemCard from './ItemCard.svelte';
 </script>
 
-
+<body>
   <p class = "title">Itemization</p> 
   <button class="button">+Add Item</button>
   <div class="columns">
@@ -16,7 +16,7 @@
       <ItemCard></ItemCard>
       </div>
 </div>
-   
+</body>
   <style>
   
   </style>

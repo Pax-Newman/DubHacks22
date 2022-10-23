@@ -23,7 +23,6 @@
 import Home from './Home.svelte';
 import Preview from './Preview.svelte';
 import Receipt from './Receipt.svelte';
-import Dummy from './dummy.svelte';
 import { onMount, onDestroy } from 'svelte';
 import { state, STATES } from './stores'
 
@@ -62,7 +61,7 @@ function isParamEmpty() {
     Receiptly
 
   <button on:click={() => state.set(STATES.home)} class="button is-primary">To Home</button>
-  <button on:click={() => state.set(STATES.preview)} class="button is-primary">To Preview</button>
+  <button on:click={() => state.set(STATES.preview)} class="button is-primary">Upload & Preview</button>
   <button on:click={() => state.set(STATES.receipt)} class="button is-primary">To Receipt</button>
 </div>
   {#if $state === STATES.home }
@@ -74,7 +73,7 @@ function isParamEmpty() {
   </div>
   {:else if $state === STATES.receipt}
  <div class = "column is-full
-  is-offset-2">
+  is-offset-0.5">
   <Receipt/>
 </div>
   {/if}
