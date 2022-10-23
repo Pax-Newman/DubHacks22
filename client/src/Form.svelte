@@ -23,8 +23,8 @@
 
 <script>
   $:formfilled = (name.length === 0);
-  name = name;
   let name = '';
+  name = name;
   var formFilled = false;
   console.log(name);
  

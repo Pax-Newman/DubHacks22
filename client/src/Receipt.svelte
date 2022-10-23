@@ -64,7 +64,7 @@ function toItem(receipt, lineID) {
 <div class="columns">
   <div class = "column is-one fifth">
     <div class="box">
-      <Form></Form>
+      <!-- <Form></Form> -->
       </div>
   </div>
 </div>
