@@ -48,11 +48,7 @@ window.addEventListener('load', (event) => {
     
 </script>
   
-{#if homeView }
-  <Home/>
-{:else if !homeView }
-<h1>Scan View</h1>
-{/if}
+
   
 
 

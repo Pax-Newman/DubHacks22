@@ -65,3 +65,24 @@ function toggleView (){
   </div>
   <div class="w3-display-bottomleft w3-padding-large"></div>
 </div>
+  <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+    <div class="w3-display-topleft w3-padding-large w3-xlarge">
+      Logo
+    </div>
+    <div class="w3-display-middle">
+      <h1 class="w3-jumbo w3-animate-top">Welcome, </h1>
+
+      <p class="w3-large w3-center"> <button on:click={toggleView}>
+        Scan or Add Receipt
+      </button>
+      
+
+    </div>
+
+
+    <div class="w3-display-bottomleft w3-padding-large">
+
+    </div>
+  </div>
+
+

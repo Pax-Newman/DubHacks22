@@ -1,60 +1,52 @@
-<style>
-  #cameraFileInput {
-  display: none;
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script>
+	let  avatar, fileinput;
+	
+	const onFileSelected =(e)=>{
+  let image = e.target.files[0];
+            let reader = new FileReader();
+            reader.readAsDataURL(image);
+            reader.onload = e => {
+                 avatar = e.target.result
+            };
 }
-
-#pictureFromCamera {
-  width: 100%;
-  height: auto;
-  margin-top: 16px;
-}
-
-.btn {
-  display: inline-block;
-  background-color: #00b531;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  filter: brightness(0.9);
-}
-</style>
-
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-<title>Camera in browsers - pixo</title>
-
-<!-- imports the webpage's stylesheet -->
-<link rel="stylesheet" href="style.css" />
-
-
-
+	
+</script>
 <body>
-<h1>Scan or Import Receipt</h1>
+<div id="app">
+	<h1>Upload Image</h1>
+  
+        {#if avatar}
+        <img class="avatar" src="{avatar}" alt="d" />
+        {:else}
+        <img class="avatar" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png" alt="" /> 
+        {/if}
+				<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} />
+        <div class="chan" on:click={()=>{fileinput.click();}}>Choose Image</div>
+        <input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
 
-<!-- The `label` is attached to the hidden file input -->
-<label for="cameraFileInput">
-  <span class="btn">Open camera</span>
-
-  <!-- The hidden file `input` for opening the native camera -->
-  <input
-    id="cameraFileInput"
-    type="file"
-    accept="image/*"
-    capture="environment"
-  />
-</label>
-
-<!-- displays the picture uploaded from the native camera -->
-<!-- svelte-ignore a11y-missing-attribute -->
-<img id="pictureFromCamera" />
+</div>
 </body>
-
-
+<style>
+	#app{
+	display:flex;
+		align-items:center;
+		justify-content:center;
+		flex-flow:column;
+}
+ 
+	.upload{
+		display:flex;
+	height:50px;
+		width:50px;
+		cursor:pointer;
+	}
+	.avatar{
+		display:flex;
+		height:200px;
+		width:200px;
+	}
+</style>
+  
 
