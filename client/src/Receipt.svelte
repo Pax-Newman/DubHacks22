@@ -4,6 +4,7 @@ import ItemCard from './ItemCard.svelte';
 import Form from './Form.svelte';
 import AddItemCard from './AddItemCard.svelte';
 import { onMount } from 'svelte';
+  import { user } from './stores';
 let receipt = {
   title: "Minco",
   UUID: 123890281321,
@@ -30,6 +31,12 @@ let receipt = {
   ],
 }
 
+let validUser = false
+// user.subscribe((value) => {
+//   if (value.length() > 0 ) {
+//     validUser = true
+//   }
+// })
 
 function setReceipt(query) {
   const url = `data/${query.slice(1)}`
@@ -63,9 +70,9 @@ function toItem(receipt, lineID) {
 
 <div class="columns">
   <div class = "column is-one fifth">
-    <div class="box">
-      <!-- <Form></Form> -->
-      </div>
+      {#if validUser}
+        <Form></Form>
+      {/if}
   </div>
 </div>
 

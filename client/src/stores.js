@@ -7,3 +7,5 @@ export const STATES = {
 }
 
 export const state = writable(0)
+
+export const user = writable("")
