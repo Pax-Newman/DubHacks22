@@ -19,7 +19,7 @@
 import Home from './Home.svelte';
 import Preview from './Preview.svelte';
 import Receipt from './Receipt.svelte';
-import { onMount } from 'svelte';
+import { onMount, onDestroy } from 'svelte';
 import { state, STATES } from './stores'
 
 // When the component is rendered
@@ -34,8 +34,12 @@ onMount(() => {
   }
 })
 
-state.subscribe(value => {
+const unsubscribe = state.subscribe(value => {
   console.log(value)
+})
+
+onDestroy(() => {
+  unsubscribe()
 })
 
 // Check if the query is empty
@@ -62,10 +66,3 @@ function isParamEmpty() {
   <Receipt/>
   {/if}
 </body>
-  
-
-  
-
-
-  
-
