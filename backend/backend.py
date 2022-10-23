@@ -40,7 +40,7 @@ def createReceipt(json_data: str):
 
 def decode_b64_img(b64_img):
     img  = Image.open(io.BytesIO(base64.decodebytes(bytes(b64_img, "utf-8"))))
-    img.save("out.jpg")
+    img.save("out.png")
     return img
 
 def updateReceipt(UUID, json_data):

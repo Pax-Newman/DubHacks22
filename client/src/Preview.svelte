@@ -24,18 +24,18 @@ const onFileSelected = (e) => {
 
 }
 
-function newReceipt(string,  base64) {
-	
-  const url = `data/${query.slice(1)}`
+function newReceipt() {
+	let query = window.location.search;
+  let request_body = {title: string, image: base64}
+	console.log(request_body)
+	const url = `data/${query.slice(1)}`
   fetch(url, {
 		method: "POST",
-		body: {
-			title:"",
-			image:base64
-		}
-	})		
-		.then((response) => response.json())
-    .then((data) => receipt = data)
+		body: JSON.stringify(request_body)
+
+	}).then((response) => {response.body.})
+		
+		//window.location.replace()
 
 }
 
@@ -52,10 +52,10 @@ function newReceipt(string,  base64) {
 	
 </div>
 <div class = "column is-one-fifth">
-<button class="button is-primary is-large" on:click= {newReceipt()}>Parse Receipt</button>
+<button class="button is-primary is-large" on:click ={()=>{newReceipt()}}>Parse Receipt</button>
 
 <div class = "column is-one-fifth"></div>
-	<button  on:click={()=>{fileinput.click();}} class="button is-danger is-large">Retake Image</button>
+	<button  on:click={()=>{fileinput.click()}} class="button is-danger is-large">Retake Image</button>
 </div>
 </div>
 
