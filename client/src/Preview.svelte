@@ -1,17 +1,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
-  
-	let  avatar, fileinput;
-	
-	const onFileSelected = (e) => {
-    let image = e.target.files[0];
-    let reader = new FileReader();
-    reader.readAsDataURL(image);
-    reader.onload = e => {
-      avatar = e.target.result
-    };
-    
+
+let avatar, fileinput;
+
+const onFileSelected = (e) => {
+	let image = e.target.files[0];
+	let reader = new FileReader();
+
+	reader.readAsDataURL(image);
+	reader.onload = e => {
+		avatar = e.target.result
+	};		
 }
 	
 </script>
@@ -68,17 +68,3 @@
 		width:200px;
 	}
 </style>
-  
-
-<!-- <label for="file-upload">
-	<span type="btn" class="button is-primary is-large">Scan a receipt!</span>
-	<input
-		  id="file-upload"
-		  type="file"
-		  alt="camera"
-		  accept="image/*"
-		  capture="environment"
-		  style="display: none"
-		  bind:files
-		/>
-</label> -->
