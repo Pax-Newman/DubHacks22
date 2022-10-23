@@ -38,16 +38,21 @@ class Database:
     def editReceipt(self, UUID, changes):
         receipt = self.getReceipt(UUID)
         
+
+        user_in = False
         # remove old user in the list if in it
         for i, user in enumerate(receipt["users"]):
             if user["userName"] == changes["userName"]:
-                print(receipt["users"][i])
-                del receipt["users"][i]
-                break
+                user_in = True
 
         # add new player to the list
-        receipt["users"].append({"userName" : changes["userName"],
-                                   "claims" : changes["claims"]   })
+        if not user_in:
+            receipt["users"].append({"userName" : changes["userName"],
+                                    "claims" : []})
+
+        for i, user in enumerate(receipt["users"]):
+            if user["userName"] == changes["userName"]:
+                user["claims"] += changes["claims"]
    
 
         # Remove all removed lines from lines list

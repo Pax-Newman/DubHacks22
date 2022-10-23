@@ -18,13 +18,17 @@ def home(path):
 def getEditPage(UUID):
     return send_from_directory('client/public', 'index.html')
 
-@app.get("/data/<UUID>")
+@app.route("/data/<UUID>", methods=["GET", "PATCH"])
 def getReceiptData(UUID):
-    result = backend.getReceiptData(UUID)
-    if result is None:
-        return "Bad UUID", 400
+    if request.method == 'GET':
+        result = backend.getReceiptData(UUID)
+        if result is None:
+            return "Bad UUID", 400
+        else:
+            return result
     else:
-        return result
+        backend.updateReceipt(UUID, request.get_json(force=True))
+        return "OKAY"
 
 @app.post("/data/")
 def createReceipt():
@@ -32,11 +36,6 @@ def createReceipt():
     print(type(json_data))
     UUID = backend.createReceipt(json_data)
     return UUID
-
-@app.route("/data/{UUID}", methods=["PATCH"])
-def updateReceipt(UUID):
-    backend.updateReceipt(request.get_json(force=True))
-    return backend.getReceiptData(UUID)
 
 
 

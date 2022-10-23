@@ -19,7 +19,7 @@ export let itemObj = {
   uuid: ""
 }
 
-const url = `data/?${itemObj.uuid}`
+const url = `/data/${itemObj.uuid}`
 const body = {
   userName:$user,
   claims:itemObj.userClaims,
