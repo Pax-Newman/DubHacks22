@@ -1,8 +1,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
+  import { construct_svelte_component } from "svelte/internal";
+
+
 
 let avatar, fileinput;
+let base64;
+let string = "";
 
 const onFileSelected = (e) => {
 	let image = e.target.files[0];
@@ -11,9 +16,29 @@ const onFileSelected = (e) => {
 	reader.readAsDataURL(image);
 	reader.onload = e => {
 		avatar = e.target.result
-	};		
+		var string = avatar.toString();
+		base64  = avatar.split(',')[1];
+		console.log(base64);
+		
+	}
+
 }
+
+function newReceipt(string,  base64) {
 	
+  const url = `data/${query.slice(1)}`
+  fetch(url, {
+		method: "POST",
+		body: {
+			title:"",
+			image:base64
+		}
+	})		
+		.then((response) => response.json())
+    .then((data) => receipt = data)
+
+}
+
 </script>
 <body>
 <div class="app">
@@ -27,7 +52,7 @@ const onFileSelected = (e) => {
 	
 </div>
 <div class = "column is-one-fifth">
-<button class="button is-primary is-large">Parse Receipt</button>
+<button class="button is-primary is-large" on:click= {newReceipt()}>Parse Receipt</button>
 
 <div class = "column is-one-fifth"></div>
 	<button  on:click={()=>{fileinput.click();}} class="button is-danger is-large">Retake Image</button>
