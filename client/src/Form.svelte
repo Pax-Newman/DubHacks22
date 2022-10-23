@@ -1,13 +1,11 @@
 
-  <div class="field">
+{#if $user === ""}
+<div class="field">
   <label class="label">Name</label>
   <div class="control">
     <input bind:value={name}>
-   
   </div>
 </div>
-
-
 {#if (typeof name === 'string' && name.length === 0) }
 <div class="control">
   <button class="button is-danger" >Submit</button>
@@ -17,9 +15,10 @@
     <button class="button is-primary" on:click = {checkForm({name})} >Submit</button>
   </div>
 {/if}
+{/if}
   
 <script>
-  import { user } from "./stores";
+import { user } from "./stores";
 
 
 
@@ -29,10 +28,11 @@ function checkForm(){
   console.log(name);
   if (typeof name === 'string' && name.length === 0){
     console.log("try again");
+  } else {
+    user.set(name);
+    alert("Signed in")
   }
-  user.set(name);
 }
-
  
 </script>
 
