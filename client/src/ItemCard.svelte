@@ -1,24 +1,45 @@
-<head><link rel="stylesheet" href=
-  "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"></head>
-<style>
-
-</style>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+</head>
 
 <div class="box">
-  <div class="columns is-mobile is-multiline is-centered">
-    <div class="column is-three-quarter">
-      <p class="title">Oat Milk Beeswax</p>
+  <div class="block">
+    <div class="level is-mobile">
+      <div class="level-item has-text-centered">
+        <p class="title">Oat Milk Beeswax</p>
+      </div>
+      <div class="level-item has-text-centered">
+        <p class="subtitle">12.74</p>
+      </div>
     </div>
-    <div class="column is-one-quarter">
-      <p class="subtitle">12.74</p>
+    <div class="level-right is-mobile">
+      <div class="level-item has-text-centered">
+        <button class="button is-primary">Mine!</button>
+      </div>
+      <div class="level-item has-text-centered">
+        <button class="button is-danger">Not Mine!</button>
+      </div>
     </div>
   </div>
-  <div class="columns is-multiline">
-    <div class="column is-half">
-      <button class="button is-primary">Mine!</button>
-    </div>
-    <div class="column">
-      <button class="button is-danger">Not Mine!</button>
+  <div class="block">
+    <div class="columns is-mobile is-multiline is-centered">
+      <div class="column is-three-quarters">
+        <div class="tag is-medium">
+          <p>Pax</p>
+        </div>
+        <div class="tag is-medium">
+          <p>Dylan</p>
+        </div>
+        <div class="tag is-medium">
+          <p>Natalie</p>
+        </div>
+        <div class="tag is-medium">
+          <p>Jonas</p>
+        </div>
+        <div class="tag is-medium">
+          <p>Other Person</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
