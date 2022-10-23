@@ -14,6 +14,7 @@
     background-position: center;
     background-size: cover;
   }
+
   </style>
 
 <head>
@@ -26,36 +27,24 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
   </head>
-  
+  <body onload="isParamEmpty()">
   {#if homeView }
   <Home></Home>
   {/if}
 
   {#if !homeView }
-<h1>Scan View</h1>
+<Scan></Scan>
   {/if}
   <title>Home</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</body>
 
-  <style>
-
-  body, html {height: 100%}
-  .bgimg {
-    min-height: 100%;
-    background-position: center;
-    background-size: cover;
-  }
-  </style>
-
-      <script>
-        	import Home from './Home.svelte';
-
-          let homeView = true;
-        function isParamEmpty() {
+<script>
+ function isParamEmpty() {
             const queryString = window.location.search;
-          
+            console.log(queryString);
             if (queryString.length == 0){
               homeView = true;
             }else{
@@ -63,6 +52,13 @@
             }
              
             }
+window.addEventListener('load', (event) => {
+  isParamEmpty();
+});
+        	import Home from './Home.svelte';
+          import Scan from './Scan.svelte';
+          let homeView = true;
+       
         function toggleView (){
           homeView = !homeView;
         }
