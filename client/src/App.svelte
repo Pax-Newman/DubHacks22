@@ -6,7 +6,10 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   
   <style>
-    body, html {height: 100%}
+    body, html {
+      background-color: #9eedf7;;
+      height: 100%;
+    }
     .bgimg {
       min-height: 100%;
       background-position: center;
@@ -56,7 +59,6 @@ function isParamEmpty() {
   <button on:click={() => state.set(STATES.home)} class="button is-primary">To Home</button>
   <button on:click={() => state.set(STATES.preview)} class="button is-primary">To Preview</button>
   <button on:click={() => state.set(STATES.receipt)} class="button is-primary">To Receipt</button>
-  <p>{$state}</p>
 
   {#if $state === STATES.home }
     <Home/>
