@@ -96,7 +96,7 @@ function toItem(receipt, lineID) {
 
   <div class="columns">
     <div class = "column is-one-third">
-      <img src="https://picsum.photos/300/500" margin = "1em">
+      <img src="/public/images/receipt.jpeg" margin = "1em">
     </div>
     <div class = "column is-one fifth">
       {#each receipt.lines as line}
