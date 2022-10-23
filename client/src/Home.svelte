@@ -24,7 +24,7 @@ function changeView(newState) {
 
     
 
-    <div class="columns is-mobile is-multiline is-centered">
+    <div class="columns">
      
       <img src="public/images/receipt-man-nooutline.svg">
       <div class="column is-half">
