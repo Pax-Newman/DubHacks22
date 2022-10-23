@@ -5,7 +5,7 @@ import uuid, base64
 
 class Database:
     def __init__(self):
-        config = dotenv_values(".env")
+        config = dotenv_values("backend/.env")
 
         self.mongodb_client = MongoClient(config["ATLAS_URI"])
         self.database = self.mongodb_client[config["DB_NAME"]]

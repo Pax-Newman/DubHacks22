@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, send_from_directory
 import random
-import backend.database
+import backend.backend as backend
 
 app = Flask(__name__)
 
@@ -20,7 +20,7 @@ def getEditPage(UUID):
 
 @app.get("/data/<UUID>")
 def getReceiptData(UUID):
-    return 
+    return backend.getReceiptData(UUID)
 
 @app.post("/data/")
 def createReceipt():
