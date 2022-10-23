@@ -15,8 +15,36 @@ export let itemObj = {
   ]
 }
 
+const url = `data/${itemObj.uuid}`
+const body = {
+  userName:$user,
+  claims:itemObj.userClaims,
+  updates:[],
+  additions:[],
+  removals:[],
+}
+
 function getPrice(price) {
   return (price / 100).toFixed(2)
+}
+
+function patch(data) {
+  return fetch(url, {
+    method: 'PATCH',
+    body: JSON.stringify(data),
+  })
+}
+
+function claim() {
+  data = body
+  data.userClaims = data.userClaims.concat([itemObj.id])
+  patch(data)
+}
+
+function unclaim() {
+  data = body
+  data.userClaims = data.userClaims.filter((id) => id === itemObj.id)
+  patch(data)
 }
 </script>
 
@@ -34,11 +62,11 @@ function getPrice(price) {
       <!-- check this for correctness -->
       {#if !itemObj.tags.includes($user)}
       <div class="level-item has-text-centered">
-        <button class="button is-primary">Mine!</button>
+        <button class="button is-primary" on:click={claim}>Mine!</button>
       </div>
       {:else}
       <div class="level-item has-text-centered">
-        <button class="button is-danger">Not Mine!</button>
+        <button class="button is-danger" on:click={unclaim}>Not Mine!</button>
       </div>
       {/if}
     </div>
