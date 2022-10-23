@@ -18,7 +18,6 @@ const onFileSelected = (e) => {
 		avatar = e.target.result
 		var string = avatar.toString();
 		base64  = avatar.split(',')[1];
-		console.log(base64);
 		
 	}
 
@@ -29,14 +28,19 @@ function newReceipt() {
   let request_body = {title: string, image: base64}
 	console.log(request_body)
 	const url = `data/${query.slice(1)}`
-  fetch(url, {
+	const reader = 
+	fetch(url, {
 		method: "POST",
 		body: JSON.stringify(request_body)
 
-	}).then((response) => {response.body.})
-		
-		//window.location.replace()
-
+	})
+	.then((response) => {
+	const reader = response.body.getReader();
+	reader.read() 
+	.then((result) => {
+		window.location.replace("http://127.0.0.1:5000/?" + String.fromCharCode(...result.value) )
+		})
+	})
 }
 
 </script>
