@@ -6,12 +6,16 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   
   <style>
-    body, html {height: 100%}
+    body, html {
+      background-color: #9eedf7;;
+      height: 100%;
+    }
     .bgimg {
       min-height: 100%;
       background-position: center;
       background-size: cover;
     }
+ 
   </style>
 </head>
 
@@ -53,16 +57,22 @@ function isParamEmpty() {
 
 <!-- Load based on state var -->
 <body>
+  <div class=" w3-padding-large w3-xlarge">
+    Receiptly
+
   <button on:click={() => state.set(STATES.home)} class="button is-primary">To Home</button>
   <button on:click={() => state.set(STATES.preview)} class="button is-primary">To Preview</button>
   <button on:click={() => state.set(STATES.receipt)} class="button is-primary">To Receipt</button>
-  <p>{$state}</p>
-
+</div>
   {#if $state === STATES.home }
     <Home/>
   {:else if $state === STATES.preview}
+  <div class = "column is-full
+  is-offset-4">
     <Preview/>
+  </div>
   {:else if $state === STATES.receipt}
+  
   <Receipt/>
   {/if}
 </body>

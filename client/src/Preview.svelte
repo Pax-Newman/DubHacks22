@@ -16,21 +16,37 @@
 	
 </script>
 <body>
-<div id="app">
-	<h1>Upload Image</h1>
-    {#if avatar}
-    <img class="avatar" src="{avatar}" alt="d" />
-    {:else}
-    <img class="avatar" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png" alt="" /> 
-    {/if}
-		<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} />
-    <div class="chan" on:click={()=>{fileinput.click();}}>Choose Image</div>
-    <input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
+<div class="app">
+	<div class = "columns">
+	<div class = "column is-one-fifth">
+		<h1>Upload or Scan Image</h1>
+		<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
+	</div>
+	<div class = "column is-one-fifth">
+	<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} />
 </div>
+</div>
+    {#if avatar}
+
+    <img class="avatar" src="{avatar}" alt="d" />
+
+    {:else}
+
+    <img class="avatar" src="https://en.wikipedia.org/wiki/File:Blank_button.svg#/media/File:Blank_button.svg" alt="" /> 
+	
+    {/if}
+
+	</div>
+
 </body>
 <style>
-	#app{
-	display:flex;
+
+	.header {
+		display: flex;
+
+	}
+	.app{
+		display:flex;
 		align-items:center;
 		justify-content:center;
 		flex-flow:column;

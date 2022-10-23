@@ -2,7 +2,9 @@
   import ItemCard from './ItemCard.svelte';
   let src = 'http://www.example.com/demo-image.jpg';
 </script>
-
+<head>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
 <body>
   <p class = "title">Itemization</p> 
   <button class="button">+Add Item</button>
@@ -29,6 +31,7 @@
 </body>
 
 <style>
+  
   row{
     align-items: left;
   }
