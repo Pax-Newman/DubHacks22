@@ -6,4 +6,4 @@ export const STATES = {
     receipt:3,
 }
 
-export const state = writable(STATES.home)
+export const state = writable(0)

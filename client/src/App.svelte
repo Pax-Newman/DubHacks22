@@ -6,12 +6,16 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   
   <style>
-    body, html {height: 100%}
+    body, html {
+      background-color: #9eedf7;;
+      height: 100%;
+    }
     .bgimg {
       min-height: 100%;
       background-position: center;
       background-size: cover;
     }
+ 
   </style>
 </head>
 
@@ -19,7 +23,7 @@
 import Home from './Home.svelte';
 import Preview from './Preview.svelte';
 import Receipt from './Receipt.svelte';
-import { onMount } from 'svelte';
+import { onMount, onDestroy } from 'svelte';
 import { state, STATES } from './stores'
 
 // When the component is rendered
@@ -34,8 +38,12 @@ onMount(() => {
   }
 })
 
-state.subscribe(value => {
+const unsubscribe = state.subscribe(value => {
   console.log(value)
+})
+
+onDestroy(() => {
+  unsubscribe()
 })
 
 // Check if the query is empty
@@ -49,23 +57,25 @@ function isParamEmpty() {
 
 <!-- Load based on state var -->
 <body>
-  <button on:click={() => state.set(STATES.home)} class="button is-primary">To Home</button>
-  <button on:click={() => state.set(STATES.preview)} class="button is-primary">To Preview</button>
-  <button on:click={() => state.set(STATES.receipt)} class="button is-primary">To Receipt</button>
-  <p>{$state}</p>
+  <div class=" w3-padding-large w3-xlarge">
+    Receiptly
 
+  <button on:click={() => state.set(STATES.home)} class="button is-primary">Home</button>
+  <button on:click={() => state.set(STATES.preview)} class="button is-primary">Preview</button>
+  <button on:click={() => state.set(STATES.receipt)} class="button is-primary">Receipt</button>
+</div>
   {#if $state === STATES.home }
     <Home/>
   {:else if $state === STATES.preview}
-    <Scan/>
+  <div class = "column is-full
+  is-offset-4">
+    <Preview/>
+  </div>
   {:else if $state === STATES.receipt}
-    <p>butts</p>
+ <div class = "column is-full
+  is-offset-0.5">
+  <Receipt/>
+</div>
   {/if}
+
 </body>
-  
-
-  
-
-
-  
-
