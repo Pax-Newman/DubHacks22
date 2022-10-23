@@ -61,7 +61,7 @@ function isParamEmpty() {
   {#if $state === STATES.home }
     <Home/>
   {:else if $state === STATES.preview}
-    <Scan/>
+    <Preview/>
   {:else if $state === STATES.receipt}
     <p>butts</p>
   {/if}
