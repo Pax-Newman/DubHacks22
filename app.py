@@ -29,7 +29,6 @@ def getReceiptData(UUID):
 @app.post("/data/")
 def createReceipt():
     json_data = request.get_json(force=True)
-    print(json_data)
     print(type(json_data))
     UUID = backend.createReceipt(json_data)
     return UUID
