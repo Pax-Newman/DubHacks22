@@ -1,4 +1,6 @@
 <script>
+import { user } from './stores';
+
 // title, price, tags
 export let itemObj = {
   id: -1,
@@ -30,7 +32,7 @@ function getPrice(price) {
     </div>
     <div class="level-right is-mobile">
       <!-- check this for correctness -->
-      {#if !itemObj.tags.includes("Pax")}
+      {#if !itemObj.tags.includes($user)}
       <div class="level-item has-text-centered">
         <button class="button is-primary">Mine!</button>
       </div>
