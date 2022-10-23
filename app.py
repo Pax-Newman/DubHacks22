@@ -14,7 +14,7 @@ def getMainPage():
 def home(path):
     return send_from_directory('client/public', path)
 
-@app.get("/<UUID>")
+@app.get("/edit/<UUID>")
 def getEditPage(UUID):
     return send_from_directory('client/public', 'index.html')
 
@@ -25,7 +25,6 @@ def getReceiptData(UUID):
 @app.post("/data/")
 def createReceipt():
     print("\n", request.data, "\n")
-    return f"You have created a new recipt!"
 
 @app.route("/data/{UUID}", methods=["PATCH"])
 def updateReceipt(UUID):

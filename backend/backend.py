@@ -1,5 +1,4 @@
-import json
-from turtle import back
+import json, io, base64
 from PIL import Image
 import backend.database as DB
 from backend.ocr_image import OCR 
@@ -24,8 +23,8 @@ def createReceipt(title: str, b64_img):
 
     db.createReceipt(title, lines, tax, img)
 
-def decode_b64_img():
-    pass
+def decode_b64_img(b64_img):
+    Image.open(io.BytesIO(base64.decodebytes(bytes(b64_img, "utf-8"))))
 
 if __name__ == "__main__":
     print(getReceiptData("M-CQt9WyTH6bymPxmMn2ag"))
