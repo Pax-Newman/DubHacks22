@@ -51,10 +51,16 @@ function toItem(receipt, lineID) {
 
   const queryString = window.location.search;
   let line = receipt.lines.find(line => line.lineID == lineID)
+  
   let userData = receipt.users.find((user) => user.userName == ourUser)
 
-  if (line == undefined || userData == undefined) {
-    return
+  if (userData == undefined) {
+    userData = {
+      userName: "",
+      claims: [],
+      totalPrice: 0,
+      image: "",
+    }
   }
 
   return {

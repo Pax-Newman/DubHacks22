@@ -42,13 +42,15 @@ def parse_line(line: str) -> Tuple[str, int]:
     return (name, price)
 
 def parse_price(price_str: str) -> int:
+    print(price_str)
     dollar, cent = tuple( [int(num) for num in ("0" + price_str).split(".")] )
     return dollar * 100 + cent
 
 def parse_tax(text: str) -> int:
+    
     match:re.Match = re.search(TAX_REGEX, text)
     if match:
-        price_str:str = match.group(0).split(" ")
+        price_str:str = match.group(0).split(" ")[1]
         return parse_price(price_str)
     else:
         return 0
