@@ -18,7 +18,15 @@
 <script>
 import Home from './Home.svelte';
 import Scan from './Scan.svelte';
-import { onMount } from 'svelte'
+import { onMount } from 'svelte';
+
+const STATES = {
+  home:1,
+  preview:2,
+  receipt:3,
+}
+
+let state = STATES.home
 
 // Vars
 let homeView = true;
@@ -46,10 +54,12 @@ function toggleView (){
 
 <!-- Load based on  -->
 <body>
-  {#if homeView }
+  {#if state === STATES.home }
     <Home/>
-  {:else}
+  {:else if state === STATES.preview}
     <Scan/>
+  {:else if state === STATES.receipt}
+    <p>beeps</p>
   {/if}
   <title>Home</title>
 </body>
