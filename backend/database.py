@@ -9,27 +9,27 @@ class Database:
 
         self.mongodb_client = MongoClient(config["ATLAS_URI"])
         self.database = self.mongodb_client[config["DB_NAME"]]
-
-        print(self.mongodb_client.list_database_names())
-        print("Connected to the MongoDB database!")
+        self.collection = self.database["Receipts"]
     
-    def createReceipt(self, title:str, lines:Tuple[str, int], tax:int, image:str):
+    def createReceipt(self, title:str, lines: list[Tuple[str, int]], tax:int, image:str):
         UUID = self.generate_UUID()
         lines = [ {"lineID": i, "itemName" : name, "price" : price} for i, (name, price) in enumerate(lines) ]
         users = []
 
         document = {"title" : title, "UUID" : UUID, "lines" : lines, "tax" : tax, "users" : users, "image" : image}
-        self.database["Receipts"].insert_one(document)
+        self.collection.insert_one(document)
+
+        return UUID
 
     def getReceipt(self, UUID:str):
-        return self.database["Receipts"].find_one({"UUID" : UUID})
+        return self.collection.find_one({"UUID" : UUID})
 
     def generate_UUID(self):
         while True:
             new_uuid:str = base64.urlsafe_b64encode(uuid.uuid4().bytes).decode("ascii")
             new_uuid = new_uuid.removesuffix("==")
 
-            result = self.database["Receipts"].find({"UUID" : {"$exists" : True, "$eq" : new_uuid }})
+            result = self.collection.find({"UUID" : {"$exists" : True, "$eq" : new_uuid }})
             
             if len(list(result)) == 0:
                 break
@@ -88,16 +88,21 @@ class Database:
                     line["price"] = update["newPrice"]
                     break
 
-
-
         
-
-        self.database["Receipts"].update_one({"UUID" : UUID}, )
+        self.collection.replace_one({"UUID" : UUID}, receipt)
         
 
 
 if __name__ == "__main__":
     db:Database = Database()
+    db.collection.delete_many({})
 
-    result = db.getReceipt("rAkQjfxpR3-98bAb7zlEqw")
-    print(result)
+    id = db.createReceipt("Costo Trip", [("Beans", 599), ("Rice", 2467), ("Toilet Paper", 1195), ("Eggs", 1245), ("Cheese", 499), ("Flesh", 2732)], 0, "IMAGE_PLACEHOLDER")
+    db.editReceipt(id, {"userName": "Natalie", "claims" : [0,1,2] , "updates":[], "additions":[], "removals":[]})
+    db.editReceipt(id, {"userName": "Pax", "claims" : [2,3,4,5] , "updates":[], "additions":[], "removals":[]})
+    db.editReceipt(id, {"userName": "Dylan", "claims" : [0,1,3,4] , "updates":[], "additions":[], "removals":[]})
+
+    id = db.createReceipt("Fred Meyer Trip", [("Braed", 599), ("Donuts", 2467), ("Soda", 1195), ("Chips", 1245), ("Watermelon", 499), ("Lube", 2732)], 0, "IMAGE_PLACEHOLDER")
+    db.editReceipt(id, {"userName": "Natalie", "claims" : [0,1,2, 3, 4, 5] , "updates":[{"lineID":0, "newName": "Bread", "newPrice":599}], "additions":[], "removals":[]})
+    db.editReceipt(id, {"userName": "Pax", "claims" : [0, 2,3,4] , "updates":[], "additions":[{"name": "sauce", "price":199, "user":"Pax"}], "removals":[]})
+    db.editReceipt(id, {"userName": "Dylan", "claims" : [0,5] , "updates":[], "additions":[], "removals":[5]})
