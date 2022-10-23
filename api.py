@@ -20,4 +20,4 @@ def createReceipt():
 
 @app.route("/data/{UUID}", metods=["PATCH"])
 def updateReceipt(UUID):
-    return f"You have updated the {UUID} recipt."
+    return f"You have updated the {UUID} receipt."
