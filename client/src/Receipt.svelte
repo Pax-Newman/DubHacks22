@@ -77,6 +77,12 @@ function toItem(receipt, lineID) {
   }
 }
 
+let totalPrice = 0
+let userData = receipt.users.find((user) => user.userName == ourUser)
+
+if (userData != undefined) {
+  totalPrice = userData.totalPrice
+}
 
 </script>
 
@@ -88,7 +94,7 @@ function toItem(receipt, lineID) {
 
 <div class="columns">
   <div class = "column is-one fifth offset-3">
-    <h1>Itemization of Receipt</h1>
+    <h1>Total: ${totalPrice}</h1>
 
 
 </div>

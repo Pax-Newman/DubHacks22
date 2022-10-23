@@ -28,6 +28,8 @@ const body = {
   removals:[],
 }
 
+let clicked = 0
+
 function getPrice(price) {
   return (price / 100).toFixed(2)
 }
@@ -41,13 +43,15 @@ function patch(data) {
 
 function claim() {
   let data = body
+  itemObj.tags = [...itemObj.tags, $user]
   data.claims = [...data.claims, itemObj.id]
   patch(data)
 }
 
 function unclaim() {
   let data = body
-  data.claims = data.claims.filter((id) => id === itemObj.id)
+  itemObj.tags = itemObj.tags.filter((tag) => tag != $user)
+  data.claims = data.claims.filter((id) => id != itemObj.id)
   patch(data)
 }
 </script>

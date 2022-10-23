@@ -1,4 +1,5 @@
 import json, io, base64
+import re, math
 from PIL import Image
 import backend.database as DB
 from backend.ocr_image import OCR 
@@ -9,12 +10,33 @@ db = DB.Database()
 
 
 def getReceiptData(UUID: str):
-    dict = db.getReceipt(UUID)
-    if dict is None:
+    dic = db.getReceipt(UUID)
+    if dic is None:
         return None
 
-    del dict["_id"]
-    return to_json(dict)
+    del dic["_id"]
+
+    for user in dic["users"]:
+        sum = 0
+        for claim in user["claims"]:
+            sum += get_line(dic, claim)
+
+        user["totalPrice"] = sum
+
+    return to_json(dic)
+
+def get_line(dict, i):
+    for line in dict["lines"]:
+        if line["lineID"] == i:
+            return math.ceil(line["price"] / count_claimers(dict, i))
+
+def count_claimers(dict, i):
+    count = 0
+    for user in dict["users"]:
+        if i in user["claims"]:
+            count +=1
+    return count
+        
 
 def to_json(dic):
     return json.dumps(dic, indent = 4)  
@@ -47,4 +69,4 @@ def updateReceipt(UUID, json_data):
     db.editReceipt(UUID, json_data)
 
 if __name__ == "__main__":
-    print(getReceiptData("M-CQt9WyTH6bymPxmMn2ag"))
+    print(getReceiptData("V_zz-3VERkqpXWvCIFZlXw"))
