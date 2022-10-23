@@ -22,7 +22,7 @@
         <p class="title">{itemObj.title}</p>
       </div>
       <div class="level-item has-text-centered">
-        <p class="subtitle">{itemObj.title}</p>
+        <p class="subtitle">{itemObj.price}</p>
       </div>
     </div>
     <div class="level-right is-mobile">

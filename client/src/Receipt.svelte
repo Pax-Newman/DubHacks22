@@ -1,17 +1,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
   import ItemCard from './ItemCard.svelte';
+  import AddItemCard from './AddItemCard.svelte';
 
 </script>
 
 
 
 <div class="columns">
-  <div class = "column is-one-third is-offset-one-quarter">
-    <h1 class = "title">Itemization</h1> 
-  </div>
+  <div class = "column is-one fifth offset-3">
+    <h1>Itemization</h1>
+    <div></div>
 
-  </div>  
+</div>
+</div>
+
   <div class="columns">
     <div class = "column is-one-third">
       <img src="https://picsum.photos/300/500" margin = "1em">
@@ -20,8 +23,7 @@
 
       <ItemCard></ItemCard>
       <ItemCard></ItemCard>
-
-      <div class = "item"><button class="button">+ Add Item</button></div>
+      <AddItemCard></AddItemCard>
     </div>
   </div>
   <style>
@@ -37,6 +39,10 @@
   padding: 10px;
   border: 2px solid rgba(111,41,97,.5);
 
+}
+
+.h1{
+  text-align: center;
 }
 
 .head{

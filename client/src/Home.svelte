@@ -18,7 +18,7 @@ function changeView(newState) {
 
 
   
-<div class="bgimg w3-display-container w3-animate-opacity w3-text-black">
+<div class="bgimg w3-display-container w3-animate-opacity">
 
   <div class="w3-display-middle">
 
