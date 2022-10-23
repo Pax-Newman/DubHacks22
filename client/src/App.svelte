@@ -17,7 +17,7 @@
 
 <script>
 import Home from './Home.svelte';
-import Scan from './Scan.svelte';
+import Scan from './Preview.svelte';
 import { onMount } from 'svelte';
 
 const STATES = {
