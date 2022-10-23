@@ -1,24 +1,14 @@
 <script>
+import { createEventDispatcher } from 'svelte'
 
-let homeView = true;
+const dispatch = createEventDispatcher()
+
 let files;
 
-function isParamEmpty() {
-  const queryString = window.location.search;
-  console.log(queryString);
-  if (queryString.length == 0){
-    homeView = true;
-  } else {
-    homeView = false;
-  }               
-}
-
-window.addEventListener('load', (event) => {
-  isParamEmpty();
-});
-            
-function toggleView (){
-  homeView = !homeView;
+function changeView(newState) {
+  dispatch('state-event', {
+    state: newState
+  })
 }
 </script>
   
