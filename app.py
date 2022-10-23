@@ -41,9 +41,4 @@ def updateReceipt(UUID):
 
 if __name__ == "__main__":
 
-    print(sys.argv)
-    if len(sys.argv) > 0 and (sys.argv[1] == "WSGI"):
-        print("serving")
-        serve(app, host="34.145.28.240", port=80)
-    else:
-        app.run(debug=True)
+    app.run(debug=True)
