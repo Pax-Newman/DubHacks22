@@ -17,7 +17,8 @@
 
 <script>
 import Home from './Home.svelte';
-import Scan from './Scan.svelte';
+import Preview from './Preview.svelte';
+import Receipt from './Receipt.svelte';
 import { onMount } from 'svelte';
 import { state, STATES } from './stores'
 
@@ -44,6 +45,7 @@ function isParamEmpty() {
 
 <!-- Load based on state var -->
 <body>
+  <Receipt/>
   <button on:click={() => {$state = STATES.home}} class="button is-primary">To Home</button>
   <button on:click={() => $state = STATES.preview} class="button is-primary">To Preview</button>
   <button on:click={() => $state = STATES.receipt} class="button is-primary">To Receipt</button>
@@ -52,11 +54,13 @@ function isParamEmpty() {
   {#if state === state }
     <Home/>
   {:else if state === STATES.preview}
-    <Scan/>
+    <Preview/>
   {:else if state === STATES.receipt}
     <p>butts</p>
   {/if}
+ 
   </body>
+ 
   <title>Home</title>
 
   

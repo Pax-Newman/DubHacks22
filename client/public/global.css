@@ -12,10 +12,9 @@ html, body {
 body {
 	color: #333;
 	background-color: #9eedf7;
-	margin: 0;
+	margin: 10px;
 	padding: 8px;
 	box-sizing: border-box;
-		font-family: 'Poppins';
 		font-weight: 300;
 
 }
