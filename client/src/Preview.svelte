@@ -24,8 +24,16 @@
 	</div>
 	<div class = "column is-one-fifth">
 	<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} />
+	
+</div>
+<div class = "column is-one-fifth">
+<button class="button is-primary is-large">Parse Receipt</button>
+
+<div class = "column is-one-fifth"></div>
+	<button  on:click={()=>{fileinput.click();}} class="button is-danger is-large">Retake Image</button>
 </div>
 </div>
+
     {#if avatar}
 
     <img class="avatar" src="{avatar}" alt="d" />
