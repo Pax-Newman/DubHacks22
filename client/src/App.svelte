@@ -40,14 +40,6 @@ function toggleView (){
 {/if}
   
 
-<style>
-  body, html {height: 100%}
-    .bgimg {
-      min-height: 100%;
-      background-position: center;
-      background-size: cover;
-    }
-</style>
 
   
 
