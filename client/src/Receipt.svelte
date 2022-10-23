@@ -9,7 +9,7 @@
 
 <div class="columns">
   <div class = "column is-one fifth offset-3">
-    <h1>Itemization</h1>
+    <h1>Itemization of Receipt</h1>
     <div></div>
 
 </div>
