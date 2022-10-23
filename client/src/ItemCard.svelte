@@ -1,17 +1,21 @@
 <script>
-  // title, price, tags
-  export let itemObj = {
-    id: -1,
-    title: 'Oat Milk Beeswax',
-    price: 13.75,
-    tags: [
-      "Dylan",
-      "Pax",
-      "Natalie",
-      "Jonas",
-      "Being X",
-    ]
-  }
+// title, price, tags
+export let itemObj = {
+  id: -1,
+  title: 'Oat Milk Beeswax',
+  price: 13.75,
+  tags: [
+    "Dylan",
+    "Pax",
+    "Natalie",
+    "Jonas",
+    "Being X",
+  ]
+}
+
+function getPrice(price) {
+  return (price / 100).toFixed(2)
+}
 </script>
 
 <div class="box">
@@ -21,7 +25,7 @@
         <p class="title">{itemObj.title}</p>
       </div>
       <div class="level-item has-text-centered">
-        <p class="subtitle">{itemObj.title}</p>
+        <p class="subtitle">{getPrice(itemObj.price)}</p>
       </div>
     </div>
     <div class="level-right is-mobile">
