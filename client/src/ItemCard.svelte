@@ -12,10 +12,14 @@ export let itemObj = {
     "Natalie",
     "Jonas",
     "Being X",
-  ]
+  ],
+  userClaims: [
+    0, 1
+  ],
+  uuid: ""
 }
 
-const url = `data/${itemObj.uuid}`
+const url = `data/?${itemObj.uuid}`
 const body = {
   userName:$user,
   claims:itemObj.userClaims,
@@ -37,13 +41,13 @@ function patch(data) {
 
 function claim() {
   let data = body
-  data.userClaims = [data.userClaims, itemObj.id]
+  data.claims = [...data.claims, itemObj.id]
   patch(data)
 }
 
 function unclaim() {
   let data = body
-  data.userClaims = data.userClaims.filter((id) => id === itemObj.id)
+  data.claims = data.claims.filter((id) => id === itemObj.id)
   patch(data)
 }
 </script>
