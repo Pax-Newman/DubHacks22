@@ -1,5 +1,4 @@
-<head><link rel="stylesheet" href=
-  "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"></head>
+
 <style>
 
 </style>

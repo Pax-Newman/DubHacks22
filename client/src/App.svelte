@@ -23,6 +23,7 @@
 import Home from './Home.svelte';
 import Preview from './Preview.svelte';
 import Receipt from './Receipt.svelte';
+import Dummy from './dummy.svelte';
 import { onMount, onDestroy } from 'svelte';
 import { state, STATES } from './stores'
 
@@ -72,7 +73,10 @@ function isParamEmpty() {
     <Preview/>
   </div>
   {:else if $state === STATES.receipt}
-  
-  <Receipt/>
+  <!-- <div class = "column is-full
+  is-offset-2"> -->
+  <Dummy/>
+  <!-- </div> -->
   {/if}
+  
 </body>

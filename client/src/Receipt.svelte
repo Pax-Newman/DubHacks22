@@ -1,3 +1,4 @@
+
 <script>
   import ItemCard from './ItemCard.svelte';
   let src = 'http://www.example.com/demo-image.jpg';
@@ -13,7 +14,7 @@
       <div class = "column is-one-third">
       <img src="https://picsum.photos/300/500" margin = "1em">
       </div>
-    <div class="cards">
+    
 
         <div class = "column is-one fifth">
 
@@ -26,7 +27,7 @@
 
 
     </div>
-  </div>
+
  
 </body>
 
