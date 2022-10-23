@@ -17,7 +17,8 @@
 
 <script>
 import Home from './Home.svelte';
-import Scan from './Preview.svelte';
+import Preview from './Preview.svelte';
+import Receipt from './Receipt.svelte';
 import { onMount, onDestroy } from 'svelte';
 import { state, STATES } from './stores'
 

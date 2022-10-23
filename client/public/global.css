@@ -1,6 +1,6 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
 @import url(http://fonts.googleapis.com/css?family=Poppins);
-
+@import 'bulma/css/bulma.css'
 
 html, body {
 	position: relative;
@@ -12,10 +12,9 @@ html, body {
 body {
 	color: #333;
 	background-color: #9eedf7;
-	margin: 0;
+	margin: 10px;
 	padding: 8px;
 	box-sizing: border-box;
-		font-family: 'Poppins';
 		font-weight: 300;
 
 }
