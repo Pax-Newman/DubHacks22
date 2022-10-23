@@ -62,3 +62,15 @@
 </style>
   
 
+<!-- <label for="file-upload">
+	<span type="btn" class="button is-primary is-large">Scan a receipt!</span>
+	<input
+		  id="file-upload"
+		  type="file"
+		  alt="camera"
+		  accept="image/*"
+		  capture="environment"
+		  style="display: none"
+		  bind:files
+		/>
+</label> -->

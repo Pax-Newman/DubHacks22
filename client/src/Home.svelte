@@ -1,5 +1,6 @@
 <script>
 import { createEventDispatcher } from 'svelte'
+import { state, STATES } from './stores';
 
 const dispatch = createEventDispatcher()
 
@@ -28,24 +29,12 @@ function changeView(newState) {
      
       <img src="public/images/receipt-man-nooutline.svg">
       <div class="column is-half">
-
-          <h1 class="w3-jumbo w3-animate-top">Welcome!</h1>
-
-        <label for="file-upload">
-          <span type="btn" class="button is-primary is-large">Scan a receipt!</span>
-          <input
-                id="file-upload"
-                type="file"
-                alt="camera"
-                accept="image/*"
-                capture="environment"
-                style="display: none"
-                bind:files
-              />
-        </div>
-       
+        <h1 class="w3-jumbo w3-animate-top">Welcome!</h1>
+        <button on:click={() => state.set(STATES.preview)} class="button is-primary is-large">Scan a receipt!</button>
       </div>
-   </div>
+       
+    </div>
+  </div>
 
 
       
