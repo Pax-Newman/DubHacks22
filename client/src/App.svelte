@@ -62,7 +62,7 @@ function isParamEmpty() {
     Receiptly
 
 
-  <button on:click={() => state.set(STATES.preview)} class="button is-primary">Add and Scan</button>
+  <button on:click={() => state.set(STATES.preview)} class="button is-primary">Add a Receipt</button>
   <button on:click={() => state.set(STATES.receipt)} class="button is-primary">Receipt</button>
 </div>
   {#if $state === STATES.home }
