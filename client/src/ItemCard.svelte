@@ -2,43 +2,52 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
 </head>
 
+<script>
+  // title, price, tags
+  export let itemObj = {
+    title: 'Oat Milk Beeswax',
+    price: 13.75,
+    tags: [
+      "Dylan",
+      "Pax",
+      "Natalie",
+      "Jonas",
+      "Being X",
+    ]
+  }
+</script>
+
 <div class="box">
   <div class="block">
     <div class="level is-mobile">
       <div class="level-item has-text-centered">
-        <p class="title">Oat Milk Beeswax</p>
+        <p class="title">{itemObj.title}</p>
       </div>
       <div class="level-item has-text-centered">
-        <p class="subtitle">12.74</p>
+        <p class="subtitle">{itemObj.title}</p>
       </div>
     </div>
     <div class="level-right is-mobile">
+      <!-- check this for correctness -->
+      {#if !itemObj.tags.includes("Pax")}
       <div class="level-item has-text-centered">
         <button class="button is-primary">Mine!</button>
       </div>
+      {:else}
       <div class="level-item has-text-centered">
         <button class="button is-danger">Not Mine!</button>
       </div>
+      {/if}
     </div>
   </div>
   <div class="block">
     <div class="columns is-mobile is-multiline is-centered">
       <div class="column is-three-quarters">
-        <div class="tag is-medium">
-          <p>Pax</p>
-        </div>
-        <div class="tag is-medium">
-          <p>Dylan</p>
-        </div>
-        <div class="tag is-medium">
-          <p>Natalie</p>
-        </div>
-        <div class="tag is-medium">
-          <p>Jonas</p>
-        </div>
-        <div class="tag is-medium">
-          <p>Other Person</p>
-        </div>
+        {#each itemObj.tags as tag}
+          <div class="tag is-medium">
+            <p>{tag}</p>
+          </div>
+        {/each}
       </div>
     </div>
   </div>
