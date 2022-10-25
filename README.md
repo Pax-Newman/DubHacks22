@@ -1,10 +1,10 @@
-# Svelte.js + Flask
+# Dubhacks 22 Project - Receiptly
+Built by Pax Newman, Dylan Caroll, and Natalie Keys
 
-A super simple example of using Flask to serve a Svelte app and use it as a backend server.
+## Receiptly
+A single page web app to quickly scan and share your receipts with your friends so you can easily split the bill.
 
-Run the following for development:
+## Built with
+Front end created using Svelte & Bulma
 
-- `python server.py` to start the Flask server.
-- `cd client; npm install; npm run autobuild` to automatically build and reload the Svelte frontend when it's changed.
-
-This example just queries the Flask server for a random number.
+Backend built with Flask, utilizing Tesseract OCR to scan and parse receipts. Uses MongoDB to store receipt and user data.
